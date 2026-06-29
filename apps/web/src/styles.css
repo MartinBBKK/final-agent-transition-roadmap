@@ -1,0 +1,85 @@
+:root {
+  color: #132238;
+  background:
+    radial-gradient(circle at top left, rgba(255, 196, 120, 0.45), transparent 34%),
+    linear-gradient(180deg, #f7f3ea 0%, #edf4f8 100%);
+  font-family: "Segoe UI", "PingFang SC", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.app-shell {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+
+.hero {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8f4e1d;
+}
+
+h1,
+h2,
+p,
+ul {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 16px;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+}
+
+.lead {
+  max-width: 640px;
+  font-size: 1.08rem;
+}
+
+.panel {
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(19, 34, 56, 0.12);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 50px rgba(19, 34, 56, 0.08);
+}
+
+ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding-top: 32px;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+}
+
