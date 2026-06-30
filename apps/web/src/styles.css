@@ -1,8 +1,8 @@
 :root {
-  color: #132238;
+  color: #1a2433;
   background:
-    radial-gradient(circle at top left, rgba(255, 196, 120, 0.45), transparent 34%),
-    linear-gradient(180deg, #f7f3ea 0%, #edf4f8 100%);
+    linear-gradient(135deg, rgba(111, 160, 142, 0.18), transparent 32%),
+    linear-gradient(180deg, #f4f7f6 0%, #e7edf0 100%);
   font-family: "Segoe UI", "PingFang SC", sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -23,63 +23,207 @@ body {
 }
 
 .app-shell {
-  max-width: 900px;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 24px;
+  width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 48px 20px 80px;
+  padding: 32px 0;
 }
 
-.hero {
-  margin-bottom: 32px;
+.sidebar,
+.chat-panel {
+  border: 1px solid rgba(26, 36, 51, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 18px 48px rgba(26, 36, 51, 0.08);
 }
 
-.eyebrow {
-  margin: 0 0 8px;
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #8f4e1d;
+.sidebar {
+  min-height: calc(100vh - 64px);
+  padding: 24px;
+  border-radius: 8px;
 }
 
 h1,
 h2,
 p,
-ul {
+dl,
+dd {
   margin-top: 0;
 }
 
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #2f6f5f;
+}
+
 h1 {
-  margin-bottom: 16px;
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  line-height: 1.05;
+  margin-bottom: 12px;
+  font-size: 2rem;
+  line-height: 1.15;
 }
 
-.lead {
-  max-width: 640px;
-  font-size: 1.08rem;
+.summary {
+  color: #526071;
 }
 
-.panel {
+.status-list {
+  display: grid;
+  gap: 16px;
+  margin: 28px 0 0;
+}
+
+.status-list div {
+  padding-top: 16px;
+  border-top: 1px solid rgba(26, 36, 51, 0.1);
+}
+
+.status-list dt {
+  margin-bottom: 4px;
+  color: #526071;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-list dd {
+  margin-left: 0;
+  overflow-wrap: anywhere;
+}
+
+.chat-panel {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: calc(100vh - 64px);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   padding: 24px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(19, 34, 56, 0.12);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 18px 50px rgba(19, 34, 56, 0.08);
+  overflow: auto;
 }
 
-ul {
-  padding-left: 20px;
+.empty-state {
+  margin: auto;
+  max-width: 420px;
+  color: #526071;
+  text-align: center;
+}
+
+.message {
+  max-width: 78%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(26, 36, 51, 0.1);
+  background: #ffffff;
+}
+
+.message-user {
+  align-self: flex-end;
+  background: #dcebe6;
+}
+
+.message-assistant {
+  align-self: flex-start;
+}
+
+.message-role {
+  display: block;
+  margin-bottom: 6px;
+  color: #2f6f5f;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.message p {
+  margin-bottom: 8px;
+  white-space: pre-wrap;
+}
+
+.message small {
+  color: #6c7785;
+  overflow-wrap: anywhere;
+}
+
+.composer {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid rgba(26, 36, 51, 0.12);
+  background: rgba(248, 250, 250, 0.92);
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 12px;
+  border: 1px solid rgba(26, 36, 51, 0.18);
+  border-radius: 8px;
+  color: inherit;
+  background: #ffffff;
+  font: inherit;
+}
+
+textarea:focus {
+  outline: 2px solid rgba(47, 111, 95, 0.32);
+  border-color: #2f6f5f;
+}
+
+.composer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+button {
+  min-width: 96px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #1f6b5a;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.error-message {
   margin-bottom: 0;
+  color: #a83434;
 }
 
 @media (max-width: 640px) {
   .app-shell {
-    padding-top: 32px;
+    grid-template-columns: 1fr;
+    width: min(100% - 24px, 1120px);
+    padding: 16px 0;
   }
 
-  .panel {
-    padding: 20px;
+  .sidebar,
+  .chat-panel {
+    min-height: auto;
+  }
+
+  .message {
+    max-width: 100%;
+  }
+
+  .composer-actions {
+    align-items: stretch;
+    flex-direction: column;
   }
 }
-

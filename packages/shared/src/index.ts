@@ -5,3 +5,13 @@ export type HealthResponse = {
   targetRepoPath: string;
 };
 
+export type ChatRequest = {
+  message: string;
+};
+
+export type ChatResponse = {
+  answer: string;
+  responseId: string;
+  model: string;
+  latencyMs: number;
+};
